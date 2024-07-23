@@ -33,6 +33,9 @@ _**High-Value Churn:**_ In regions like India and Southeast Asia, about 80% of r
 
 In this project, we will identify high-value customers using a specific metric (to be described later) and will concentrate on predicting churn exclusively for this segment.
 
+**Business Goals and Data Overview:- **
+The dataset provides customer-level details for a four-month period: June, July, August, and September, with these months coded as 6, 7, 8, and 9, respectively.
+
 
 
 
