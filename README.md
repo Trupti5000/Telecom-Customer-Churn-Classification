@@ -1,4 +1,4 @@
-# Telecom-Customer-Churn-Classification
+# Telecom Customer Churn Case Study
 
 # **Business Issue Overview** 
 In the telecom sector, customers can select from a range of service providers and easily switch between them, creating a highly competitive environment. 
