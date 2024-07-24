@@ -1,6 +1,6 @@
 # Telecom-Customer-Churn-Classification
 
-**Business Issue Overview** :-
+# **Business Issue Overview** 
 In the telecom sector, customers can select from a range of service providers and easily switch between them, creating a highly competitive environment. 
 This results in an average annual churn rate of 15-25%. With the cost of acquiring a new customer being 5-10 times higher than retaining an existing one, prioritizing customer retention has become essential, often taking precedence over acquiring new customers.
 
@@ -9,7 +9,7 @@ To reduce customer loss, these companies need to predict which customers are mos
 
 _**In this project, we will analyze data from a top telecom firm, create models to spot customers who are likely to churn, and find out the main reasons behind it.**_
 
-**Exploring and Defining Customer Churn** :-
+# **Exploring and Defining Customer Churn** 
 The telecom sector features two main payment models: postpaid, where customers settle a monthly or annual bill after using services, and prepaid, where customers pay or top up their accounts in advance and use the services until the balance is depleted.
 In the postpaid model, when customers choose to switch to a different provider, they usually notify their current operator to terminate their services, clearly indicating that churn has occurred.
 Conversely, in the prepaid model, customers can switch networks by simply ceasing their usage without notifying the provider. This makes it difficult to determine if a customer has genuinely churned or is merely taking a temporary break from the service (e.g., due to traveling abroad).
@@ -17,7 +17,7 @@ Therefore, predicting churn is especially important and challenging for prepaid 
 
 This project focuses on the Indian and Southeast Asian markets.
 
-**What Is Churn?** 
+# **What Is Churn?** 
 Churn can be interpreted in several ways, such as:-
 
 _**Usage-Based Churn:**_ This definition identifies churn as customers who have not used any services—such as making calls or using the internet—over a set period.
@@ -33,29 +33,30 @@ _**High-Value Churn:**_ In regions like India and Southeast Asia, about 80% of r
 
 In this project, we will identify high-value customers using a specific metric (to be described later) and will concentrate on predicting churn exclusively for this segment.
 
-**Business Goals and Data Overview:- ** 
+# **Business Goals & Data Overview**
 The dataset provides customer-level details for a four-month period: June, July, August, and September, with these months coded as 6, 7, 8, and 9, respectively.
 The aim is to forecast churn in the ninth month using data from the first three months. To achieve this effectively, it is important to understand typical customer behavior leading up to churn.
 
-**Understanding Customer Behavior During Churn:** Customers generally do not switch to a competitor immediately but do so gradually over time, especially high-value customers.
-In churn prediction, the customer lifecycle is often categorized into three phases:
+# Understanding Customer Behavior During Churn 
+Customers generally do not switch to a competitor immediately but do so gradually over time, especially high-value customers.
+In churn prediction, the customer lifecycle is often categorized into three phases:**
 
-The ‘Good’ Phase: This phase represents when the customer is satisfied with the service and their behavior remains consistent and positive.
+_**The ‘Good’ Phase:**_ This phase represents when the customer is satisfied with the service and their behavior remains consistent and positive.
 
-The ‘Action’ Phase: During this phase, customer satisfaction begins to decline. Factors such as receiving a competitive offer, facing unfair charges, or experiencing poor service quality may contribute to this decline. Customers in this phase typically show changes in behavior compared to the ‘Good’ phase. Identifying high-risk customers during this phase is critical because it allows for potential corrective measures, like offering competitive deals or enhancing service quality.
+_**The ‘Action’ Phase:**_ During this phase, customer satisfaction begins to decline. Factors such as receiving a competitive offer, facing unfair charges, or experiencing poor service quality may contribute to this decline. Customers in this phase typically show changes in behavior compared to the ‘Good’ phase. Identifying high-risk customers during this phase is critical because it allows for potential corrective measures, like offering competitive deals or enhancing service quality.
 
-The ‘Churn’ Phase: In this phase, the customer is considered to have churned. Churn is identified based on this phase, but it’s important to remember that this data is not available during the prediction stage (i.e., during the ‘Action’ months). Therefore, after marking churn as 1/0 based on this phase, all related data from this phase is excluded from analysis.
+_**The ‘Churn’ Phase:**_ In this phase, the customer is considered to have churned. Churn is identified based on this phase, but it’s important to remember that this data is not available during the prediction stage (i.e., during the ‘Action’ months). Therefore, after marking churn as 1/0 based on this phase, all related data from this phase is excluded from analysis.
 
 In this exercise, within the four-month timeframe, the phases are categorized as follows: the initial two months are classified as the ‘Good’ phase, the third month is identified as the ‘Action’ phase, and the final month is designated as the ‘Churn’ phase.
 
-**Data Handling and Feature Creation**
+# **Data Handling and Feature Creation**
 To effectively prepare the data, follow these key steps:
 
-Create New Features: Developing new features is vital for improving model performance, as these features often differentiate between successful and less effective models. We will use our business knowledge to create features that are likely to be strong indicators of churn.
+_**Create New Features:**_ Developing new features is vital for improving model performance, as these features often differentiate between successful and less effective models. We will use our business knowledge to create features that are likely to be strong indicators of churn.
 
-Identify High-Value Customers: The goal is to predict churn specifically for high-value customers. High-value customers are defined as those who have recharged with an amount equal to or greater than X, where X is the 70th percentile of the average recharge amount during the first two months (the ‘Good’ phase).
+_**Identify High-Value Customers:** _The goal is to predict churn specifically for high-value customers. High-value customers are defined as those who have recharged with an amount equal to or greater than X, where X is the 70th percentile of the average recharge amount during the first two months (the ‘Good’ phase).
 
-Label Churners and Exclude Churn Phase Data: Label customers as churned (churn=1) or not churned (churn=0) based on their activity in the fourth month (the ‘Churn’ phase). A customer is considered churned if they have not made any calls (incoming or outgoing) or used mobile internet in this period. Use the following attributes to identify churners:
+_**Label Churners and Exclude Churn Phase Data:**_ Label customers as churned (churn=1) or not churned (churn=0) based on their activity in the fourth month (the ‘Churn’ phase). A customer is considered churned if they have not made any calls (incoming or outgoing) or used mobile internet in this period. Use the following attributes to identify churners:
 
 total_ic_mou_9
 total_og_mou_9
@@ -64,30 +65,30 @@ vol_3g_mb_9
 
 After tagging churners, remove all attributes related to the churn phase, such as those with ‘_9’ in their names.
 
-**Building Predictive Models**
+# **Building Predictive Models**
 Create models to predict customer churn. The predictive model will serve two key purposes:
 
-1. Forecast Churn for High-Value Customers: The model will predict if a high-value customer is at risk of churning soon (during the churn phase). This will allow the company to take proactive measures, such as offering exclusive plans or discounts, to retain these important customers.
+**1. Forecast Churn for High-Value Customers:**_ _The model will predict if a high-value customer is at risk of churning soon (during the churn phase). This will allow the company to take proactive measures, such as offering exclusive plans or discounts, to retain these important customers._
    
-2. Identify Key Predictors of Churn: The model will also be used to identify significant variables that are strong indicators of churn. These variables may help understand why customers decide to switch to other networks.
+**2. Identify Key Predictors of Churn:** _ _The model will also be used to identify significant variables that are strong indicators of churn. These variables may help understand why customers decide to switch to other networks._
 
 While it’s possible to achieve both objectives with a single machine learning model, the large number of attributes in this case suggests using a dimensionality reduction technique like PCA first. After applying PCA, any classification model can be used for prediction.
 
 Additionally, since churn rates are typically low (around 5-10%), indicating a class imbalance, techniques to manage this imbalance will be employed.
 
-_**To build the model, follow these suggested steps:**_
+# **To build the model, follow these suggested steps:**
 
-**Preprocess Data:** Convert columns to the appropriate formats, handle missing values, and perform any necessary data cleaning.
+_**Preprocess Data:**_ Convert columns to the appropriate formats, handle missing values, and perform any necessary data cleaning.
 
-**Conduct Exploratory Analysis:** Perform exploratory data analysis to extract valuable insights. This may include insights that are directly useful for the business or for subsequent modeling and feature engineering.
+_**Conduct Exploratory Analysis:**_ Perform exploratory data analysis to extract valuable insights. This may include insights that are directly useful for the business or for subsequent modeling and feature engineering.
 
-**Derive New Features:** Create new features based on the insights gained from the exploratory analysis and domain knowledge.
+_**Derive New Features:**_ Create new features based on the insights gained from the exploratory analysis and domain knowledge.
 
-**Dimensionality Reduction:** Apply Principal Component Analysis (PCA) to reduce the number of variables and focus on the most significant components.
+_**Dimensionality Reduction:** _Apply Principal Component Analysis (PCA) to reduce the number of variables and focus on the most significant components.
 
-**Model Training and Tuning:** Train various models and fine-tune their hyperparameters. Address class imbalance using appropriate techniques to improve model performance on the minority class.
+_**Model Training and Tuning:** _Train various models and fine-tune their hyperparameters. Address class imbalance using appropriate techniques to improve model performance on the minority class.
 
-**Evaluate Models:** Assess the models using relevant evaluation metrics. Prioritize accuracy in identifying churners over non-churners, and select metrics that reflect this business objective.
+_**Evaluate Models:** _ Assess the models using relevant evaluation metrics. Prioritize accuracy in identifying churners over non-churners, and select metrics that reflect this business objective.
 
 **Feature Importance Analysis:** Build a separate model to identify important predictor attributes for churn. Logistic regression or tree-based models are good choices for this purpose. Ensure to handle multi-collinearity if using logistic regression.
 
